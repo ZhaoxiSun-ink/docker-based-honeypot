@@ -1,0 +1,20 @@
+
+
+**************************************************
+IP Address: 127.0.0.1
+Mail to: sender@example.com
+Mail from: recipient@example.com
+Data:
+
+Subject: Test Email
+Hello, this is a test email.
+
+**************************************************
+IP Address: ::1
+Mail to: sender@test.com
+Mail from: recipient@test.com
+Data:
+
+Subject: Test Email
+
+This is a test email sent via netcat.

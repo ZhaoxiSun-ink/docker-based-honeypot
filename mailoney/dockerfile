@@ -1,0 +1,20 @@
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim-buster
+
+# Working directory inside the container
+WORKDIR /app
+
+# Copy the local code to the container
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Optional: Install python-libemu if required
+# RUN pip install python-libemu
+
+# Expose port 2525 for the app to listen on
+EXPOSE 2525
+
+# Run mailoney.py when the container launches
+CMD ["python", "mailoney.py", "-i", "0.0.0.0", "-p", "2525", "-s", "my_fake_mail_server", "-t", "open_relay"]
