@@ -56,6 +56,10 @@ RUN python3 -m venv cowrie-env && \
 
 COPY --chown=${COWRIE_USER}:${COWRIE_GROUP} . ${COWRIE_HOME}/cowrie-git
 
+#creating the log directory and setting 
+RUN mkdir -p ${COWRIE_HOME}/var/lib/cowrie/tty && \
+    chown -R ${COWRIE_USER}:${COWRIE_GROUP} ${COWRIE_HOME}/var
+
 # Define the volume, user, workdir, path, etc.
 VOLUME [ "/cowrie/cowrie-git/var", "/cowrie/cowrie-git/etc" ]
 USER ${COWRIE_USER}

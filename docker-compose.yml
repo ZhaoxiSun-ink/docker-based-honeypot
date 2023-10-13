@@ -32,6 +32,46 @@ services:
     ports:
       - "3389:3389"
 
+  mailoney:
+    container_name: honeypot_mailoney
+    build:
+      context: ./mailoney
+    networks: 
+      my_network:
+        ipv4_address: 172.20.0.5
+    ports:
+      - "2525:25"
+    volumes:
+      - ./mailoney_logs:/var/log/mailoney
+
+  
+  apache:
+    container_name: honeypot_apache
+    build:
+      context: ./apache
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.6
+    ports:
+      - "80:80"
+
+  ldap:
+    build: 
+      context: ./ldap
+    container_name: honeypot_ldap
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.7
+    ports:
+      - '389:389'
+    volumes:
+      - ./ldap/logs:/var/log/syslog-ng
+    logging:
+        driver: "json-file"
+        options:
+            max-size: "200k"
+            max-file: "10"
+  
 networks:
   my_network:
     name: honeypot_network

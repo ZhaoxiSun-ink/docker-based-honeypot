@@ -38,7 +38,7 @@ RUN rm -f /root/new_password.txt
 RUN echo "xfce4-session" > /root/.xsession
 
 # Configure rsyslog to send logs to remote rsyslog container
-RUN echo "*.* @172.30.0.4:514" >> /etc/rsyslog.d/50-default.conf
+RUN echo "*.* @172.20.0.3:514" >> /etc/rsyslog.d/50-default.conf
 
 # Increase the limit of inotify watches
 RUN echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf && \

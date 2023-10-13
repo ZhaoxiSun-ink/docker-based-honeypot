@@ -21,7 +21,7 @@ pymongo==4.5.0
 rethinkdb==2.4.9
 
 # s3
-botocore==1.31.40
+botocore==1.31.54
 
 # slack
 slackclient==2.9.4
@@ -33,8 +33,8 @@ influxdb==5.3.1
 wokkel==18.0.0
 
 # misp
-pymisp==2.4.175
+pymisp==2.4.176
 
 # redis
-redis==5.0.0
+redis==5.0.1
 

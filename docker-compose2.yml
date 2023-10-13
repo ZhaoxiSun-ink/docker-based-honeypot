@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  cowrie:
+    container_name: honeypot_cowrie
+    build: 
+      context: ./cowrie
+    networks: 
+      my_network:
+        ipv4_address: 172.20.0.2
+    ports:
+      - "2222:2222"
+
+
+  syslog:
+    container_name: honeypot_syslog
+    build: 
+      context: ./rsyslog
+    networks: 
+      my_network:
+        ipv4_address: 172.20.0.3
+    ports:
+      - "514:514/udp"
+      - "514:514/tcp"
+
+  rdp:
+    container_name: honeypot_rdp
+    build: 
+      context: ./rdp
+    networks: 
+      my_network:
+        ipv4_address: 172.20.0.4
+    ports:
+      - "3389:3389"
+
+  mailoney:
+    container_name: honeypot_mailoney
+    build:
+      context: ./mailoney
+    networks: 
+      my_network:
+        ipv4_address: 172.20.0.5
+    ports:
+      - "2525:25"
+    volumes:
+      - ./mailoney_logs:/var/log/mailoney
+
+
+networks:
+  my_network:
+    name: honeypot_network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
