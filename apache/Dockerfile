@@ -8,5 +8,5 @@ RUN sed -i 's/#LoadModule authnz_ldap_module modules\/mod_authnz_ldap.so/LoadMod
 COPY ldap.conf /usr/local/apache2/conf/extra/
 
 # Include the custom configuration in httpd.conf
-RUN echo "Include conf/extra/ldap.conf" >> /usr/local/apache2/conf/httpd.conf
+#RUN echo "Include conf/extra/ldap.conf" >> /usr/local/apache2/conf/httpd.conf
 EXPOSE 80

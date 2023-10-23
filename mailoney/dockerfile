@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Optional: Install python-libemu if required
 # RUN pip install python-libemu
 
-# Expose port 2525 for the app to listen on
+# Expose port 25 for the app to listen on
 EXPOSE 2525
 
 # Run mailoney.py when the container launches
