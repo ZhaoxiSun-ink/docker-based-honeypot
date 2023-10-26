@@ -1,5 +1,5 @@
 #!/bin/bash
-CONTAINER_NAME="honeypot_cowrie"
+CONTAINER_NAME="honeypot_apache"
 current_time=$(date +"%m_%d_%H_%M")
 filename=${CONTAINER_NAME}_${current_time}.txt
 echo "name: $filename"

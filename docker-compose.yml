@@ -40,7 +40,7 @@ services:
       my_network:
         ipv4_address: 172.20.0.5
     ports:
-      - "25:2525"
+      - "2525:2525"
     volumes:
       - ./mailoney_logs:/var/log/mailoney
 
