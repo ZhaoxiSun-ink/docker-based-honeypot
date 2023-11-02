@@ -1,0 +1,10 @@
+# Use the MySQL 5.7 image as the base image
+FROM mysql:5.7
+
+# Environment variables for MySQL (adjust values as needed)
+ENV MYSQL_ROOT_PASSWORD=123456
+ENV MYSQL_DATABASE=blog
+
+# Copy the SQL script into the container
+COPY ./src/blog.sql /docker-entrypoint-initdb.d/
+
