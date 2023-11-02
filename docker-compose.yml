@@ -85,7 +85,9 @@ services:
       my_network:
         ipv4_address: 172.20.0.8
 
-  
+volumes:
+  db_data:
+ 
 networks:
   my_network:
     name: honeypot_network
