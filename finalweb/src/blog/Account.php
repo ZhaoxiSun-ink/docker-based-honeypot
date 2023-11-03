@@ -11,7 +11,7 @@ class Account{
 		$result = mysqli_query($this->db,$sql);
 		if(mysqli_num_rows($result)>0){
 			$_SESSION['username'] = $_POST['username'];
-			header("location: http://172.20.0.6/blog/result.php");
+			header("Location:result.php");
 			exit;
 		}
 	}
