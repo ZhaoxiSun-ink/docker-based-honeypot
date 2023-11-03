@@ -2,7 +2,7 @@
 CONTAINER_NAME="honeypot_mailoney"
 current_time=$(date +"$m_%d_%H_%M")
 LOG_PATH="/app/logs/mail.log"
-DEST="/home/zhaoxisun/honeypot/docker-based-honeypot/logs/${CONTAINER_NAME}_${current_time}.txt"
+DEST="/home/zhaoxisun/logs/${CONTAINER_NAME}_${current_time}.txt"
 
 docker cp "${CONTAINER_NAME}:${LOG_PATH}" "$DEST"
 
