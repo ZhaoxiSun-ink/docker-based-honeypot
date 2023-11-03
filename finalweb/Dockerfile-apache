@@ -1,4 +1,6 @@
 FROM php:8.2.2-apache
 RUN docker-php-ext-install mysqli
+RUN sed -i '/<VirtualHost \*:80>/a ServerName creativechronicle.space' /etc/apache2/sites-available/000-default.conf \
+ && sed -i '/ServerName creativechronicle.space/a ServerAlias www.creativechronicle.space' /etc/apache2/sites-available/000-default.conf
 COPY ./src /var/www/html
 
