@@ -48,7 +48,8 @@ services:
   apache:
     container_name: honeypot_apache
     build:
-      context: ./apache
+      context: ./finalweb
+      dockerfile: Dockerfile-apache
     networks:
       my_network:
         ipv4_address: 172.20.0.6
@@ -71,7 +72,22 @@ services:
         options:
             max-size: "200k"
             max-file: "10"
-  
+  db:
+    build:
+      context: ./finalweb
+      dockerfile: Dockerfile-mysql
+    container_name: honeypot_mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.8
+
+volumes:
+  db_data:
+ 
 networks:
   my_network:
     name: honeypot_network
