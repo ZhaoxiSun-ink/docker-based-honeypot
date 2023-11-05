@@ -1,5 +1,34 @@
+
+# Use the official PHP image with Apache
 FROM php:8.2.2-apache
+
+# Install mysqli extension for PHP
 RUN docker-php-ext-install mysqli
-RUN sed -i '/<VirtualHost \*:80>/a ServerName creativechronicle.site' /etc/apache2/sites-available/000-default.conf \
- && sed -i '/ServerName creativechronicle.site/a ServerAlias www.creativechronicle.site' /etc/apache2/sites-available/000-default.conf
+
+# Enable Apache modules
+RUN a2enmod ssl \
+    && a2enmod headers \
+    && a2ensite default-ssl
+
+# Modify the default Apache configuration file with the server name and alias
+COPY /etc/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+# Copy source files to the web directory
 COPY ./src /var/www/html
+
+# Set up the necessary directories for the SSL certificates
+RUN mkdir -p /etc/letsencrypt/live/creativechronicle.site
+
+# Copy SSL certificates and configuration
+COPY /etc/letsencrypt/archive/creativechronicle.site/fullchain1.pem /etc/letsencrypt/live/creativechronicle.site/fullchain.pem
+COPY /etc/letsencrypt/archive/creativechronicle.site/privkey1.pem /etc/letsencrypt/live/creativechronicle.site/privkey.pem
+COPY /etc/letsencrypt/options-ssl-apache.conf /etc/letsencrypt/options-ssl-apache.conf
+COPY /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
+COPY /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/private/ssl-cert-snakeoil.key
+
+# Expose ports for HTTP and HTTPS
+EXPOSE 80
+EXPOSE 443
+
+# Start Apache in the foreground
+CMD ["apache2ctl", "-D", "FOREGROUND"]
