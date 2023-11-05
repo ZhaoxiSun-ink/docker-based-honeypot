@@ -3,4 +3,3 @@ RUN docker-php-ext-install mysqli
 RUN sed -i '/<VirtualHost \*:80>/a ServerName creativechronicle.site' /etc/apache2/sites-available/000-default.conf \
  && sed -i '/ServerName creativechronicle.site/a ServerAlias www.creativechronicle.site' /etc/apache2/sites-available/000-default.conf
 COPY ./src /var/www/html
-

@@ -1,6 +1,6 @@
 #!/bin/bash
 CONTAINER_NAME="honeypot_mailoney"
-current_time=$(date +"$m_%d_%H_%M")
+current_time=$(date --date='yesterday' +"%m_%d_%H_%M")
 LOG_PATH="/app/logs/mail.log"
 DEST="/home/zhaoxisun/logs/${CONTAINER_NAME}_${current_time}.txt"
 

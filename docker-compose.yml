@@ -82,6 +82,7 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+      - ../../logs/mysql-logs:/var/log/mysql
     networks:
       my_network:
         ipv4_address: 172.20.0.8

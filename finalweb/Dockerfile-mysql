@@ -7,4 +7,8 @@ ENV MYSQL_DATABASE=blog
 
 # Copy the SQL script into the container
 COPY ./src/blog.sql /docker-entrypoint-initdb.d/
+# Copy the custom configuration file into the container
+COPY ./my-custom.cnf /etc/mysql/conf.d/my-custom.cnf
 
+# Set the appropriate permissions for the custom configuration file
+RUN chmod 644 /etc/mysql/conf.d/my-custom.cnf
