@@ -1,6 +1,6 @@
 #!/bin/bash
 CONTAINER_NAME="honeypot_cowrie"
-current_time=$(date +"%m_%d_%H_%M")
+current_time=$(date --date='yesterday' +"%m_%d_%H_%M")
 filename=${CONTAINER_NAME}_${current_time}.txt
 echo "name: $filename"
 docker logs $CONTAINER_NAME >"/home/zhaoxisun/logs/$filename"
