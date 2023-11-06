@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the directory where the logs are stored
-LOG_DIR=/home/zhaxisun/logs/mysql-logs
+LOG_DIR=/home/zhaoxisun/logs/mysql-logs
 
 # Define the MySQL Docker container name
 CONTAINER_NAME=honeypot_mysql
